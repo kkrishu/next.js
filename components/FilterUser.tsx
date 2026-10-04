@@ -1,4 +1,4 @@
-"use Client"
+"use client"
 type User = {
     id: number;
     name: string;
@@ -6,15 +6,19 @@ type User = {
     email: string;
 
 }
-import { useState } from "react"
-export default function FilterUser({ users }:{users:User[]}){
+import { useState } from "react";
+
+export default function FilterUser({ users }: {users: User[] }) {
+
     const[searchTerm,setSearchTerm] = useState("");
-    const filteredUsers = users.filter(user=>{
-        return user.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())
+
+    const filteredUsers = users.filter(User=>{
+        return User.name.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())
     })
     return(
         <div>
-            <input type="text"
+            <input 
+            type="text"
             placeholder="SearchUser"
             value={searchTerm}
             onChange={(data)=> setSearchTerm(data.target.value)}/>
